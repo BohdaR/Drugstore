@@ -36,5 +36,46 @@ namespace Drugstore
         {
             Application.Exit();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void clientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BrendForm brendForm = new BrendForm();
+            brendForm.ShowDialog();
+        }
+
+        private void groupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DrugFormForm drugFormForm = new DrugFormForm();
+            drugFormForm.ShowDialog();
+        }
+
+        private void positionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DrugsForm drugsForm = new DrugsForm();
+            drugsForm.ShowDialog();
+        }
+
+        private void serviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrdersForm ordersForm = new OrdersForm();
+            ordersForm.ShowDialog();
+        }
+
+        private void visitingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoriesForm categoriesForm = new CategoriesForm();
+            categoriesForm.ShowDialog();
+        }
+
+        private void workerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersForm usersForm = new UsersForm();
+            usersForm.ShowDialog();
+        }
     }
 }
