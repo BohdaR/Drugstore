@@ -30,6 +30,7 @@ namespace Drugstore
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.registerLabel = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.passField = new System.Windows.Forms.TextBox();
             this.loginField = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@ namespace Drugstore
             this.panel2 = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.registerLabel = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,6 +62,21 @@ namespace Drugstore
             this.mainPanel.TabIndex = 0;
             this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
+            // 
+            // registerLabel
+            // 
+            this.registerLabel.AutoSize = true;
+            this.registerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registerLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.registerLabel.Location = new System.Drawing.Point(172, 411);
+            this.registerLabel.Name = "registerLabel";
+            this.registerLabel.Size = new System.Drawing.Size(171, 19);
+            this.registerLabel.TabIndex = 6;
+            this.registerLabel.Text = "Ще не маєте акаунту?";
+            this.registerLabel.Click += new System.EventHandler(this.registerLabel_Click);
+            this.registerLabel.MouseLeave += new System.EventHandler(this.registerLabel_MouseLeave);
+            this.registerLabel.MouseHover += new System.EventHandler(this.registerLabel_MouseHover);
             // 
             // LoginButton
             // 
@@ -155,21 +170,6 @@ namespace Drugstore
             this.label1.Text = "Авторизація";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // registerLabel
-            // 
-            this.registerLabel.AutoSize = true;
-            this.registerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.registerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.registerLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.registerLabel.Location = new System.Drawing.Point(172, 411);
-            this.registerLabel.Name = "registerLabel";
-            this.registerLabel.Size = new System.Drawing.Size(171, 19);
-            this.registerLabel.TabIndex = 6;
-            this.registerLabel.Text = "Ще не маєте акаунту?";
-            this.registerLabel.Click += new System.EventHandler(this.registerLabel_Click);
-            this.registerLabel.MouseLeave += new System.EventHandler(this.registerLabel_MouseLeave);
-            this.registerLabel.MouseHover += new System.EventHandler(this.registerLabel_MouseHover);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +178,7 @@ namespace Drugstore
             this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.LoginForm1_Load);
             this.mainPanel.ResumeLayout(false);

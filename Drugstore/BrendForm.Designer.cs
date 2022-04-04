@@ -58,6 +58,7 @@ namespace Drugstore
             this.company_profitTextBox1 = new System.Windows.Forms.TextBox();
             this.manufacturers_productsTextBox1 = new System.Windows.Forms.TextBox();
             this.ratingTextBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.brendDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +66,6 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             idLabel1 = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
             countryLabel1 = new System.Windows.Forms.Label();
@@ -120,7 +120,6 @@ namespace Drugstore
             company_profitLabel1.Size = new System.Drawing.Size(158, 27);
             company_profitLabel1.TabIndex = 39;
             company_profitLabel1.Text = "company profit:";
-            company_profitLabel1.Click += new System.EventHandler(this.company_profitLabel1_Click);
             // 
             // manufacturers_productsLabel1
             // 
@@ -303,56 +302,67 @@ namespace Drugstore
             // idTextBox1
             // 
             this.idTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.brendBindingSource, "id", true));
-            this.idTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.idTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
             this.idTextBox1.Location = new System.Drawing.Point(834, 68);
             this.idTextBox1.Name = "idTextBox1";
-            this.idTextBox1.Size = new System.Drawing.Size(145, 30);
+            this.idTextBox1.Size = new System.Drawing.Size(145, 34);
             this.idTextBox1.TabIndex = 34;
             // 
             // nameTextBox1
             // 
             this.nameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.brendBindingSource, "name", true));
-            this.nameTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.nameTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
             this.nameTextBox1.Location = new System.Drawing.Point(834, 108);
             this.nameTextBox1.Name = "nameTextBox1";
-            this.nameTextBox1.Size = new System.Drawing.Size(145, 30);
+            this.nameTextBox1.Size = new System.Drawing.Size(145, 34);
             this.nameTextBox1.TabIndex = 36;
             // 
             // countryTextBox1
             // 
             this.countryTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.brendBindingSource, "country", true));
-            this.countryTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.countryTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
             this.countryTextBox1.Location = new System.Drawing.Point(834, 148);
             this.countryTextBox1.Name = "countryTextBox1";
-            this.countryTextBox1.Size = new System.Drawing.Size(145, 30);
+            this.countryTextBox1.Size = new System.Drawing.Size(145, 34);
             this.countryTextBox1.TabIndex = 38;
             // 
             // company_profitTextBox1
             // 
             this.company_profitTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.brendBindingSource, "company_profit", true));
-            this.company_profitTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.company_profitTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
             this.company_profitTextBox1.Location = new System.Drawing.Point(834, 188);
             this.company_profitTextBox1.Name = "company_profitTextBox1";
-            this.company_profitTextBox1.Size = new System.Drawing.Size(145, 30);
+            this.company_profitTextBox1.Size = new System.Drawing.Size(145, 34);
             this.company_profitTextBox1.TabIndex = 40;
             // 
             // manufacturers_productsTextBox1
             // 
             this.manufacturers_productsTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.brendBindingSource, "manufacturers_products", true));
-            this.manufacturers_productsTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.manufacturers_productsTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
             this.manufacturers_productsTextBox1.Location = new System.Drawing.Point(834, 228);
             this.manufacturers_productsTextBox1.Name = "manufacturers_productsTextBox1";
-            this.manufacturers_productsTextBox1.Size = new System.Drawing.Size(145, 30);
+            this.manufacturers_productsTextBox1.Size = new System.Drawing.Size(145, 34);
             this.manufacturers_productsTextBox1.TabIndex = 42;
             // 
             // ratingTextBox1
             // 
             this.ratingTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.brendBindingSource, "rating", true));
-            this.ratingTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.ratingTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Bold);
             this.ratingTextBox1.Location = new System.Drawing.Point(834, 268);
             this.ratingTextBox1.Name = "ratingTextBox1";
-            this.ratingTextBox1.Size = new System.Drawing.Size(145, 30);
+            this.ratingTextBox1.Size = new System.Drawing.Size(145, 34);
             this.ratingTextBox1.TabIndex = 44;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Yellow;
+            this.label1.Location = new System.Drawing.Point(673, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 38);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "EDITOR";
             // 
             // brendDataGridView
             // 
@@ -366,10 +376,10 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
             this.brendDataGridView.DataSource = this.brendBindingSource;
-            this.brendDataGridView.Location = new System.Drawing.Point(12, 73);
+            this.brendDataGridView.Location = new System.Drawing.Point(12, 70);
             this.brendDataGridView.Name = "brendDataGridView";
             this.brendDataGridView.Size = new System.Drawing.Size(636, 220);
-            this.brendDataGridView.TabIndex = 44;
+            this.brendDataGridView.TabIndex = 45;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -408,25 +418,14 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn6.HeaderText = "rating";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(673, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 38);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "EDITOR";
-            // 
             // BrendForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1031, 378);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1031, 404);
             this.Controls.Add(this.brendDataGridView);
+            this.Controls.Add(this.label1);
             this.Controls.Add(idLabel1);
             this.Controls.Add(this.idTextBox1);
             this.Controls.Add(nameLabel1);
@@ -481,6 +480,7 @@ namespace Drugstore
         private System.Windows.Forms.TextBox company_profitTextBox1;
         private System.Windows.Forms.TextBox manufacturers_productsTextBox1;
         private System.Windows.Forms.TextBox ratingTextBox1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView brendDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -488,6 +488,5 @@ namespace Drugstore
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Label label1;
     }
 }

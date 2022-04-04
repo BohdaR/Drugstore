@@ -61,6 +61,39 @@ namespace Drugstore
             ((System.ComponentModel.ISupportInitialize)(this.use_categoriesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            idLabel.ForeColor = System.Drawing.SystemColors.Control;
+            idLabel.Location = new System.Drawing.Point(683, 82);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(40, 29);
+            idLabel.TabIndex = 49;
+            idLabel.Text = "id:";
+            // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            nameLabel.ForeColor = System.Drawing.SystemColors.Control;
+            nameLabel.Location = new System.Drawing.Point(683, 158);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(70, 29);
+            nameLabel.TabIndex = 51;
+            nameLabel.Text = "name:";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            descriptionLabel.ForeColor = System.Drawing.SystemColors.Control;
+            descriptionLabel.Location = new System.Drawing.Point(683, 237);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(128, 29);
+            descriptionLabel.TabIndex = 53;
+            descriptionLabel.Text = "description:";
+            // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet1";
@@ -143,6 +176,7 @@ namespace Drugstore
             this.deleteButton.TabIndex = 35;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // addFieldbutton
             // 
@@ -157,6 +191,7 @@ namespace Drugstore
             this.addFieldbutton.TabIndex = 34;
             this.addFieldbutton.Text = "Add";
             this.addFieldbutton.UseVisualStyleBackColor = false;
+            this.addFieldbutton.Click += new System.EventHandler(this.addFieldbutton_Click);
             // 
             // saveButton
             // 
@@ -170,6 +205,7 @@ namespace Drugstore
             this.saveButton.TabIndex = 36;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // label1
             // 
@@ -196,6 +232,7 @@ namespace Drugstore
             this.searchCanselButton.TabIndex = 48;
             this.searchCanselButton.Text = "Cancel";
             this.searchCanselButton.UseVisualStyleBackColor = false;
+            this.searchCanselButton.Click += new System.EventHandler(this.searchCanselButton_Click);
             // 
             // searchButton
             // 
@@ -211,6 +248,7 @@ namespace Drugstore
             this.searchButton.TabIndex = 47;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = false;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // FilterInput
             // 
@@ -224,64 +262,31 @@ namespace Drugstore
             // 
             this.drug_formTableAdapter.ClearBeforeFill = true;
             // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            idLabel.ForeColor = System.Drawing.SystemColors.Control;
-            idLabel.Location = new System.Drawing.Point(683, 82);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(36, 27);
-            idLabel.TabIndex = 49;
-            idLabel.Text = "id:";
-            // 
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.use_categoriesBindingSource, "id", true));
-            this.idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.idTextBox.Location = new System.Drawing.Point(820, 89);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(159, 30);
+            this.idTextBox.Size = new System.Drawing.Size(159, 35);
             this.idTextBox.TabIndex = 50;
-            // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            nameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            nameLabel.Location = new System.Drawing.Point(683, 158);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(67, 27);
-            nameLabel.TabIndex = 51;
-            nameLabel.Text = "name:";
             // 
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.use_categoriesBindingSource, "name", true));
-            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.nameTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameTextBox.Location = new System.Drawing.Point(820, 165);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(159, 30);
+            this.nameTextBox.Size = new System.Drawing.Size(159, 35);
             this.nameTextBox.TabIndex = 52;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            descriptionLabel.ForeColor = System.Drawing.SystemColors.Control;
-            descriptionLabel.Location = new System.Drawing.Point(683, 237);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(119, 27);
-            descriptionLabel.TabIndex = 53;
-            descriptionLabel.Text = "description:";
             // 
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.use_categoriesBindingSource, "description", true));
-            this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.descriptionTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionTextBox.Location = new System.Drawing.Point(820, 237);
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(159, 30);
+            this.descriptionTextBox.Size = new System.Drawing.Size(159, 35);
             this.descriptionTextBox.TabIndex = 54;
             // 
             // CategoriesForm
@@ -306,6 +311,7 @@ namespace Drugstore
             this.Controls.Add(this.countLabel);
             this.Controls.Add(this.use_categoriesDataGridView);
             this.Name = "CategoriesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CategoriesForm";
             this.Load += new System.EventHandler(this.CategoriesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();

@@ -33,6 +33,7 @@ namespace Drugstore
 
         }
 
+
         private void BrendForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dataSet1.brend' table. You can move, or remove it, as needed.
@@ -42,8 +43,6 @@ namespace Drugstore
 
             countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
         }
-
-        
 
         private void searchCanselButton_Click(object sender, EventArgs e)
         {
@@ -56,11 +55,6 @@ namespace Drugstore
         private void addFieldbutton_Click(object sender, EventArgs e)
         {
             brendBindingSource.AddNew();
-        }
-
-        private void brendUpdateButton_Click(object sender, EventArgs e)
-        {
-            this.tableAdapterManager.UpdateAll(this.dataSet1);
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -87,12 +81,8 @@ namespace Drugstore
         private void searchButton_Click(object sender, EventArgs e)
         {
             brendBindingSource.Filter = "name LIKE\'%" + FilterInput.Text + "%\'";
+
+            countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
         }
-
-        private void company_profitLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

@@ -262,6 +262,17 @@ namespace Drugstore
             form_of_drug_idLabel.TabIndex = 83;
             form_of_drug_idLabel.Text = "form of drug id:";
             // 
+            // imageLabel
+            // 
+            imageLabel.AutoSize = true;
+            imageLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            imageLabel.ForeColor = System.Drawing.SystemColors.Control;
+            imageLabel.Location = new System.Drawing.Point(825, 207);
+            imageLabel.Name = "imageLabel";
+            imageLabel.Size = new System.Drawing.Size(72, 27);
+            imageLabel.TabIndex = 84;
+            imageLabel.Text = "image:";
+            // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet1";
@@ -312,6 +323,7 @@ namespace Drugstore
             this.searchCanselButton.TabIndex = 56;
             this.searchCanselButton.Text = "Cancel";
             this.searchCanselButton.UseVisualStyleBackColor = false;
+            this.searchCanselButton.Click += new System.EventHandler(this.searchCanselButton_Click);
             // 
             // searchButton
             // 
@@ -327,6 +339,7 @@ namespace Drugstore
             this.searchButton.TabIndex = 55;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = false;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // FilterInput
             // 
@@ -348,6 +361,7 @@ namespace Drugstore
             this.saveButton.TabIndex = 53;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // deleteButton
             // 
@@ -362,6 +376,7 @@ namespace Drugstore
             this.deleteButton.TabIndex = 52;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // addFieldbutton
             // 
@@ -376,6 +391,7 @@ namespace Drugstore
             this.addFieldbutton.TabIndex = 51;
             this.addFieldbutton.Text = "Add";
             this.addFieldbutton.UseVisualStyleBackColor = false;
+            this.addFieldbutton.Click += new System.EventHandler(this.addFieldbutton_Click);
             // 
             // countLabel
             // 
@@ -391,26 +407,26 @@ namespace Drugstore
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "Id", true));
-            this.idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.idTextBox.Location = new System.Drawing.Point(1105, 87);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(172, 30);
+            this.idTextBox.Size = new System.Drawing.Size(172, 34);
             this.idTextBox.TabIndex = 58;
             // 
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "name", true));
-            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.nameTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameTextBox.Location = new System.Drawing.Point(1105, 127);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(172, 30);
+            this.nameTextBox.Size = new System.Drawing.Size(172, 34);
             this.nameTextBox.TabIndex = 60;
             // 
             // leave_without_a_prescriptionCheckBox
             // 
             this.leave_without_a_prescriptionCheckBox.AutoSize = true;
             this.leave_without_a_prescriptionCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.drugsBindingSource, "leave_without_a_prescription", true));
-            this.leave_without_a_prescriptionCheckBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.leave_without_a_prescriptionCheckBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.leave_without_a_prescriptionCheckBox.ForeColor = System.Drawing.SystemColors.Control;
             this.leave_without_a_prescriptionCheckBox.Location = new System.Drawing.Point(1105, 167);
             this.leave_without_a_prescriptionCheckBox.Name = "leave_without_a_prescriptionCheckBox";
@@ -422,100 +438,100 @@ namespace Drugstore
             // indicationTextBox
             // 
             this.indicationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "indication", true));
-            this.indicationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.indicationTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.indicationTextBox.Location = new System.Drawing.Point(1105, 247);
             this.indicationTextBox.Name = "indicationTextBox";
-            this.indicationTextBox.Size = new System.Drawing.Size(172, 30);
+            this.indicationTextBox.Size = new System.Drawing.Size(172, 34);
             this.indicationTextBox.TabIndex = 64;
             // 
             // contraindicationTextBox
             // 
             this.contraindicationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "contraindication", true));
-            this.contraindicationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.contraindicationTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contraindicationTextBox.Location = new System.Drawing.Point(1105, 287);
             this.contraindicationTextBox.Name = "contraindicationTextBox";
-            this.contraindicationTextBox.Size = new System.Drawing.Size(172, 30);
+            this.contraindicationTextBox.Size = new System.Drawing.Size(172, 34);
             this.contraindicationTextBox.TabIndex = 66;
             // 
             // taking_rulesTextBox
             // 
             this.taking_rulesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "taking_rules", true));
-            this.taking_rulesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.taking_rulesTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.taking_rulesTextBox.Location = new System.Drawing.Point(1105, 327);
             this.taking_rulesTextBox.Name = "taking_rulesTextBox";
-            this.taking_rulesTextBox.Size = new System.Drawing.Size(172, 30);
+            this.taking_rulesTextBox.Size = new System.Drawing.Size(172, 34);
             this.taking_rulesTextBox.TabIndex = 68;
             // 
             // principle_of_operationTextBox
             // 
             this.principle_of_operationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "principle_of_operation", true));
-            this.principle_of_operationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.principle_of_operationTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.principle_of_operationTextBox.Location = new System.Drawing.Point(1105, 367);
             this.principle_of_operationTextBox.Name = "principle_of_operationTextBox";
-            this.principle_of_operationTextBox.Size = new System.Drawing.Size(172, 30);
+            this.principle_of_operationTextBox.Size = new System.Drawing.Size(172, 34);
             this.principle_of_operationTextBox.TabIndex = 70;
             // 
             // priceTextBox
             // 
             this.priceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "price", true));
-            this.priceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.priceTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.priceTextBox.Location = new System.Drawing.Point(1105, 407);
             this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(172, 30);
+            this.priceTextBox.Size = new System.Drawing.Size(172, 34);
             this.priceTextBox.TabIndex = 72;
             // 
             // dosageTextBox
             // 
             this.dosageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "dosage", true));
-            this.dosageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dosageTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dosageTextBox.Location = new System.Drawing.Point(1105, 447);
             this.dosageTextBox.Name = "dosageTextBox";
-            this.dosageTextBox.Size = new System.Drawing.Size(172, 30);
+            this.dosageTextBox.Size = new System.Drawing.Size(172, 34);
             this.dosageTextBox.TabIndex = 74;
             // 
             // packagingTextBox
             // 
             this.packagingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "packaging", true));
-            this.packagingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.packagingTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.packagingTextBox.Location = new System.Drawing.Point(1105, 487);
             this.packagingTextBox.Name = "packagingTextBox";
-            this.packagingTextBox.Size = new System.Drawing.Size(172, 30);
+            this.packagingTextBox.Size = new System.Drawing.Size(172, 34);
             this.packagingTextBox.TabIndex = 76;
             // 
             // ratingTextBox
             // 
             this.ratingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "rating", true));
-            this.ratingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.ratingTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ratingTextBox.Location = new System.Drawing.Point(1105, 527);
             this.ratingTextBox.Name = "ratingTextBox";
-            this.ratingTextBox.Size = new System.Drawing.Size(172, 30);
+            this.ratingTextBox.Size = new System.Drawing.Size(172, 34);
             this.ratingTextBox.TabIndex = 78;
             // 
             // use_category_idTextBox
             // 
             this.use_category_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "use_category_id", true));
-            this.use_category_idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.use_category_idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.use_category_idTextBox.Location = new System.Drawing.Point(1105, 567);
             this.use_category_idTextBox.Name = "use_category_idTextBox";
-            this.use_category_idTextBox.Size = new System.Drawing.Size(172, 30);
+            this.use_category_idTextBox.Size = new System.Drawing.Size(172, 34);
             this.use_category_idTextBox.TabIndex = 80;
             // 
             // brend_idTextBox
             // 
             this.brend_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "brend_id", true));
-            this.brend_idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.brend_idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.brend_idTextBox.Location = new System.Drawing.Point(1105, 607);
             this.brend_idTextBox.Name = "brend_idTextBox";
-            this.brend_idTextBox.Size = new System.Drawing.Size(172, 30);
+            this.brend_idTextBox.Size = new System.Drawing.Size(172, 34);
             this.brend_idTextBox.TabIndex = 82;
             // 
             // form_of_drug_idTextBox
             // 
             this.form_of_drug_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "form_of_drug_id", true));
-            this.form_of_drug_idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.form_of_drug_idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.form_of_drug_idTextBox.Location = new System.Drawing.Point(1105, 647);
             this.form_of_drug_idTextBox.Name = "form_of_drug_idTextBox";
-            this.form_of_drug_idTextBox.Size = new System.Drawing.Size(172, 30);
+            this.form_of_drug_idTextBox.Size = new System.Drawing.Size(172, 34);
             this.form_of_drug_idTextBox.TabIndex = 84;
             // 
             // drugsDataGridView
@@ -635,24 +651,13 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn14.HeaderText = "form_of_drug_id";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             // 
-            // imageLabel
-            // 
-            imageLabel.AutoSize = true;
-            imageLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            imageLabel.ForeColor = System.Drawing.SystemColors.Control;
-            imageLabel.Location = new System.Drawing.Point(825, 207);
-            imageLabel.Name = "imageLabel";
-            imageLabel.Size = new System.Drawing.Size(72, 27);
-            imageLabel.TabIndex = 84;
-            imageLabel.Text = "image:";
-            // 
             // imageTextBox
             // 
             this.imageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "image", true));
-            this.imageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.imageTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.imageTextBox.Location = new System.Drawing.Point(1105, 207);
             this.imageTextBox.Name = "imageTextBox";
-            this.imageTextBox.Size = new System.Drawing.Size(172, 30);
+            this.imageTextBox.Size = new System.Drawing.Size(172, 34);
             this.imageTextBox.TabIndex = 85;
             // 
             // DrugsForm
@@ -660,7 +665,7 @@ namespace Drugstore
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1405, 772);
+            this.ClientSize = new System.Drawing.Size(1291, 763);
             this.Controls.Add(imageLabel);
             this.Controls.Add(this.imageTextBox);
             this.Controls.Add(this.drugsDataGridView);
@@ -701,6 +706,7 @@ namespace Drugstore
             this.Controls.Add(this.addFieldbutton);
             this.Controls.Add(this.countLabel);
             this.Name = "DrugsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DrugsForm";
             this.Load += new System.EventHandler(this.DrugsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();

@@ -37,7 +37,48 @@ namespace Drugstore
         {
             // TODO: This line of code loads data into the 'dataSet1.drug_form' table. You can move, or remove it, as needed.
             this.drug_formTableAdapter.Fill(this.dataSet1.drug_form);
+            countLabel.Text = $"Усього: {drug_formDataGridView.Rows.Count - 1}";
+        }
 
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            drug_formBindingSource.EndEdit();
+            drug_formTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {drug_formDataGridView.Rows.Count - 1}";
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            drug_formBindingSource.Filter = "name LIKE\'%" + FilterInput.Text + "%\'";
+
+            countLabel.Text = $"Усього: {drug_formDataGridView.Rows.Count - 1}";
+        }
+
+        private void searchCanselButton_Click(object sender, EventArgs e)
+        {
+            FilterInput.Clear();
+            drug_formBindingSource.Filter = null;
+
+            countLabel.Text = $"Усього: {drug_formDataGridView.Rows.Count - 1}";
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in drug_formDataGridView.SelectedRows)
+            {
+                drug_formDataGridView.Rows.RemoveAt(row.Index);
+            }
+
+            drug_formBindingSource.EndEdit();
+            drug_formTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {drug_formDataGridView.Rows.Count - 1}";
+        }
+
+        private void addFieldbutton_Click(object sender, EventArgs e)
+        {
+            drug_formBindingSource.AddNew();
         }
     }
 }

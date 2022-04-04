@@ -35,41 +35,50 @@ namespace Drugstore
 
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet1.drug_form' table. You can move, or remove it, as needed.
-            this.drug_formTableAdapter.Fill(this.dataSet1.drug_form);
             // TODO: This line of code loads data into the 'dataSet1.use_categories' table. You can move, or remove it, as needed.
             this.use_categoriesTableAdapter.Fill(this.dataSet1.use_categories);
-
-        }
-
-        private void company_profitLabel1_Click(object sender, EventArgs e)
-        {
-
+            countLabel.Text = $"Усього: {use_categoriesDataGridView.Rows.Count - 1}";
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            use_categoriesBindingSource.EndEdit();
+            use_categoriesTableAdapter.Update(dataSet1);
 
-        }
-
-        private void searchCanselButton_Click(object sender, EventArgs e)
-        {
-
+            countLabel.Text = $"Усього: {use_categoriesDataGridView.Rows.Count - 1}";
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            use_categoriesBindingSource.Filter = "name LIKE\'%" + FilterInput.Text + "%\'";
 
+            countLabel.Text = $"Усього: {use_categoriesDataGridView.Rows.Count - 1}";
+        }
+
+        private void searchCanselButton_Click(object sender, EventArgs e)
+        {
+            FilterInput.Clear();
+            use_categoriesBindingSource.Filter = null;
+
+            countLabel.Text = $"Усього: {use_categoriesDataGridView.Rows.Count - 1}";
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in use_categoriesDataGridView.SelectedRows)
+            {
+                use_categoriesDataGridView.Rows.RemoveAt(row.Index);
+            }
 
+            use_categoriesBindingSource.EndEdit();
+            use_categoriesTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {use_categoriesDataGridView.Rows.Count - 1}";
         }
 
         private void addFieldbutton_Click(object sender, EventArgs e)
         {
-
+            use_categoriesBindingSource.AddNew();
         }
     }
 }

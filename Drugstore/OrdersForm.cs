@@ -29,12 +29,48 @@ namespace Drugstore
         {
             // TODO: This line of code loads data into the 'dataSet1.orders' table. You can move, or remove it, as needed.
             this.ordersTableAdapter.Fill(this.dataSet1.orders);
-
+            countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
         }
 
-        private void createdLabel_Click(object sender, EventArgs e)
+        private void addFieldbutton_Click(object sender, EventArgs e)
         {
+            ordersBindingSource.AddNew();
+        }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in ordersDataGridView.SelectedRows)
+            {
+                ordersDataGridView.Rows.RemoveAt(row.Index);
+            }
+
+            ordersBindingSource.EndEdit();
+            ordersTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            ordersBindingSource.EndEdit();
+            ordersTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            ordersBindingSource.Filter = "customers_full_name LIKE\'%" + FilterInput.Text + "%\'";
+
+            countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
+        }
+
+        private void searchCanselButton_Click(object sender, EventArgs e)
+        {
+            ordersBindingSource.Filter = null;
+            FilterInput.Clear();
+
+            countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
         }
     }
 }
