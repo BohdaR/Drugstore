@@ -30,26 +30,35 @@ namespace Drugstore
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dataSet1 = new Drugstore.DataSet1();
-            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersTableAdapter = new Drugstore.DataSet1TableAdapters.ordersTableAdapter();
-            this.tableAdapterManager = new Drugstore.DataSet1TableAdapters.TableAdapterManager();
-            this.ordersBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            System.Windows.Forms.Label idLabel;
+            System.Windows.Forms.Label customers_full_nameLabel;
+            System.Windows.Forms.Label addressLabel;
+            System.Windows.Forms.Label phone_numberLabel;
+            System.Windows.Forms.Label delivery_methodLabel;
+            System.Windows.Forms.Label pay_methodLabel;
+            System.Windows.Forms.Label createdLabel;
+            System.Windows.Forms.Label updatedLabel;
+            System.Windows.Forms.Label order_itemLabel;
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchCanselButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.FilterInput = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.addFieldbutton = new System.Windows.Forms.Button();
+            this.countLabel = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.customers_full_nameTextBox = new System.Windows.Forms.TextBox();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.phone_numberTextBox = new System.Windows.Forms.TextBox();
+            this.delivery_methodTextBox = new System.Windows.Forms.TextBox();
+            this.pay_methodTextBox = new System.Windows.Forms.TextBox();
+            this.createdDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.updatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.order_itemTextBox = new System.Windows.Forms.TextBox();
+            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Drugstore.DataSet1();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,197 +68,121 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.ordersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).BeginInit();
-            this.ordersBindingNavigator.SuspendLayout();
+            this.ordersTableAdapter = new Drugstore.DataSet1TableAdapters.ordersTableAdapter();
+            this.tableAdapterManager = new Drugstore.DataSet1TableAdapters.TableAdapterManager();
+            idLabel = new System.Windows.Forms.Label();
+            customers_full_nameLabel = new System.Windows.Forms.Label();
+            addressLabel = new System.Windows.Forms.Label();
+            phone_numberLabel = new System.Windows.Forms.Label();
+            delivery_methodLabel = new System.Windows.Forms.Label();
+            pay_methodLabel = new System.Windows.Forms.Label();
+            createdLabel = new System.Windows.Forms.Label();
+            updatedLabel = new System.Windows.Forms.Label();
+            order_itemLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button6
+            // idLabel
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Monotype Corsiva", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(118, 43);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 42;
-            this.button6.Text = "Search";
-            this.button6.UseVisualStyleBackColor = false;
+            idLabel.AutoSize = true;
+            idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            idLabel.ForeColor = System.Drawing.SystemColors.Control;
+            idLabel.Location = new System.Drawing.Point(683, 95);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(36, 27);
+            idLabel.TabIndex = 57;
+            idLabel.Text = "id:";
             // 
-            // textBox1
+            // customers_full_nameLabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 41;
+            customers_full_nameLabel.AutoSize = true;
+            customers_full_nameLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            customers_full_nameLabel.ForeColor = System.Drawing.SystemColors.Control;
+            customers_full_nameLabel.Location = new System.Drawing.Point(683, 135);
+            customers_full_nameLabel.Name = "customers_full_nameLabel";
+            customers_full_nameLabel.Size = new System.Drawing.Size(205, 27);
+            customers_full_nameLabel.TabIndex = 59;
+            customers_full_nameLabel.Text = "customers full name:";
             // 
-            // button5
+            // addressLabel
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(405, 340);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 44);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "Print";
-            this.button5.UseVisualStyleBackColor = false;
+            addressLabel.AutoSize = true;
+            addressLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            addressLabel.ForeColor = System.Drawing.SystemColors.Control;
+            addressLabel.Location = new System.Drawing.Point(683, 175);
+            addressLabel.Name = "addressLabel";
+            addressLabel.Size = new System.Drawing.Size(91, 27);
+            addressLabel.TabIndex = 61;
+            addressLabel.Text = "address:";
             // 
-            // button4
+            // phone_numberLabel
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(287, 340);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 44);
-            this.button4.TabIndex = 39;
-            this.button4.Text = "Update";
-            this.button4.UseVisualStyleBackColor = false;
+            phone_numberLabel.AutoSize = true;
+            phone_numberLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            phone_numberLabel.ForeColor = System.Drawing.SystemColors.Control;
+            phone_numberLabel.Location = new System.Drawing.Point(683, 215);
+            phone_numberLabel.Name = "phone_numberLabel";
+            phone_numberLabel.Size = new System.Drawing.Size(146, 27);
+            phone_numberLabel.TabIndex = 63;
+            phone_numberLabel.Text = "phone number:";
             // 
-            // button3
+            // delivery_methodLabel
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(849, 340);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 44);
-            this.button3.TabIndex = 38;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = false;
+            delivery_methodLabel.AutoSize = true;
+            delivery_methodLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            delivery_methodLabel.ForeColor = System.Drawing.SystemColors.Control;
+            delivery_methodLabel.Location = new System.Drawing.Point(683, 255);
+            delivery_methodLabel.Name = "delivery_methodLabel";
+            delivery_methodLabel.Size = new System.Drawing.Size(167, 27);
+            delivery_methodLabel.TabIndex = 65;
+            delivery_methodLabel.Text = "delivery method:";
             // 
-            // button2
+            // pay_methodLabel
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(161, 340);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 44);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Edit";
-            this.button2.UseVisualStyleBackColor = false;
+            pay_methodLabel.AutoSize = true;
+            pay_methodLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            pay_methodLabel.ForeColor = System.Drawing.SystemColors.Control;
+            pay_methodLabel.Location = new System.Drawing.Point(683, 295);
+            pay_methodLabel.Name = "pay_methodLabel";
+            pay_methodLabel.Size = new System.Drawing.Size(127, 27);
+            pay_methodLabel.TabIndex = 67;
+            pay_methodLabel.Text = "pay method:";
             // 
-            // button1
+            // createdLabel
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(26, 340);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 44);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
+            createdLabel.AutoSize = true;
+            createdLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            createdLabel.ForeColor = System.Drawing.SystemColors.Control;
+            createdLabel.Location = new System.Drawing.Point(684, 335);
+            createdLabel.Name = "createdLabel";
+            createdLabel.Size = new System.Drawing.Size(92, 27);
+            createdLabel.TabIndex = 69;
+            createdLabel.Text = "created:";
+            createdLabel.Click += new System.EventHandler(this.createdLabel_Click);
             // 
-            // button7
+            // updatedLabel
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Font = new System.Drawing.Font("Monotype Corsiva", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(200, 43);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 43;
-            this.button7.Text = "Cancel";
-            this.button7.UseVisualStyleBackColor = false;
+            updatedLabel.AutoSize = true;
+            updatedLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            updatedLabel.ForeColor = System.Drawing.SystemColors.Control;
+            updatedLabel.Location = new System.Drawing.Point(683, 375);
+            updatedLabel.Name = "updatedLabel";
+            updatedLabel.Size = new System.Drawing.Size(93, 27);
+            updatedLabel.TabIndex = 71;
+            updatedLabel.Text = "updated:";
             // 
-            // dataSet1
+            // order_itemLabel
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ordersBindingSource
-            // 
-            this.ordersBindingSource.DataMember = "orders";
-            this.ordersBindingSource.DataSource = this.dataSet1;
-            // 
-            // ordersTableAdapter
-            // 
-            this.ordersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.brendTableAdapter = null;
-            this.tableAdapterManager.drug_formTableAdapter = null;
-            this.tableAdapterManager.drugsTableAdapter = null;
-            this.tableAdapterManager.ordersTableAdapter = this.ordersTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Drugstore.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.use_categoriesTableAdapter = null;
-            this.tableAdapterManager.usersTableAdapter = null;
-            // 
-            // ordersBindingNavigator
-            // 
-            this.ordersBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.ordersBindingNavigator.BindingSource = this.ordersBindingSource;
-            this.ordersBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.ordersBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.ordersBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.ordersBindingNavigatorSaveItem});
-            this.ordersBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.ordersBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.ordersBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.ordersBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.ordersBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.ordersBindingNavigator.Name = "ordersBindingNavigator";
-            this.ordersBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.ordersBindingNavigator.Size = new System.Drawing.Size(986, 25);
-            this.ordersBindingNavigator.TabIndex = 44;
-            this.ordersBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            order_itemLabel.AutoSize = true;
+            order_itemLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            order_itemLabel.ForeColor = System.Drawing.SystemColors.Control;
+            order_itemLabel.Location = new System.Drawing.Point(683, 415);
+            order_itemLabel.Name = "order_itemLabel";
+            order_itemLabel.Size = new System.Drawing.Size(118, 27);
+            order_itemLabel.TabIndex = 73;
+            order_itemLabel.Text = "order item:";
             // 
             // ordersDataGridView
             // 
@@ -268,8 +201,200 @@ namespace Drugstore
             this.ordersDataGridView.DataSource = this.ordersBindingSource;
             this.ordersDataGridView.Location = new System.Drawing.Point(12, 87);
             this.ordersDataGridView.Name = "ordersDataGridView";
-            this.ordersDataGridView.Size = new System.Drawing.Size(932, 220);
+            this.ordersDataGridView.Size = new System.Drawing.Size(636, 355);
             this.ordersDataGridView.TabIndex = 44;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Yellow;
+            this.label1.Location = new System.Drawing.Point(673, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 38);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "EDITOR";
+            // 
+            // searchCanselButton
+            // 
+            this.searchCanselButton.AutoSize = true;
+            this.searchCanselButton.BackColor = System.Drawing.Color.DarkMagenta;
+            this.searchCanselButton.FlatAppearance.BorderSize = 0;
+            this.searchCanselButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchCanselButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.searchCanselButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.searchCanselButton.Location = new System.Drawing.Point(535, 19);
+            this.searchCanselButton.Name = "searchCanselButton";
+            this.searchCanselButton.Size = new System.Drawing.Size(113, 37);
+            this.searchCanselButton.TabIndex = 56;
+            this.searchCanselButton.Text = "Cancel";
+            this.searchCanselButton.UseVisualStyleBackColor = false;
+            // 
+            // searchButton
+            // 
+            this.searchButton.AutoSize = true;
+            this.searchButton.BackColor = System.Drawing.Color.DarkMagenta;
+            this.searchButton.FlatAppearance.BorderSize = 0;
+            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.searchButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.searchButton.Location = new System.Drawing.Point(382, 19);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(113, 37);
+            this.searchButton.TabIndex = 55;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = false;
+            // 
+            // FilterInput
+            // 
+            this.FilterInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.FilterInput.Location = new System.Drawing.Point(12, 23);
+            this.FilterInput.Name = "FilterInput";
+            this.FilterInput.Size = new System.Drawing.Size(347, 30);
+            this.FilterInput.TabIndex = 54;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Green;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(680, 472);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(469, 36);
+            this.button1.TabIndex = 53;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.DarkMagenta;
+            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.deleteButton.Location = new System.Drawing.Point(137, 462);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(113, 44);
+            this.deleteButton.TabIndex = 52;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            // 
+            // addFieldbutton
+            // 
+            this.addFieldbutton.BackColor = System.Drawing.Color.DarkMagenta;
+            this.addFieldbutton.FlatAppearance.BorderSize = 0;
+            this.addFieldbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addFieldbutton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addFieldbutton.ForeColor = System.Drawing.SystemColors.Control;
+            this.addFieldbutton.Location = new System.Drawing.Point(20, 462);
+            this.addFieldbutton.Name = "addFieldbutton";
+            this.addFieldbutton.Size = new System.Drawing.Size(97, 44);
+            this.addFieldbutton.TabIndex = 51;
+            this.addFieldbutton.Text = "Add";
+            this.addFieldbutton.UseVisualStyleBackColor = false;
+            // 
+            // countLabel
+            // 
+            this.countLabel.AutoSize = true;
+            this.countLabel.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold);
+            this.countLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.countLabel.Location = new System.Drawing.Point(503, 468);
+            this.countLabel.Name = "countLabel";
+            this.countLabel.Size = new System.Drawing.Size(145, 38);
+            this.countLabel.TabIndex = 50;
+            this.countLabel.Text = "Усього: ?";
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "id", true));
+            this.idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.idTextBox.Location = new System.Drawing.Point(894, 90);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(255, 35);
+            this.idTextBox.TabIndex = 58;
+            // 
+            // customers_full_nameTextBox
+            // 
+            this.customers_full_nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "customers_full_name", true));
+            this.customers_full_nameTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.customers_full_nameTextBox.Location = new System.Drawing.Point(894, 130);
+            this.customers_full_nameTextBox.Name = "customers_full_nameTextBox";
+            this.customers_full_nameTextBox.Size = new System.Drawing.Size(255, 35);
+            this.customers_full_nameTextBox.TabIndex = 60;
+            // 
+            // addressTextBox
+            // 
+            this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "address", true));
+            this.addressTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.addressTextBox.Location = new System.Drawing.Point(894, 170);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(255, 35);
+            this.addressTextBox.TabIndex = 62;
+            // 
+            // phone_numberTextBox
+            // 
+            this.phone_numberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "phone_number", true));
+            this.phone_numberTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.phone_numberTextBox.Location = new System.Drawing.Point(894, 210);
+            this.phone_numberTextBox.Name = "phone_numberTextBox";
+            this.phone_numberTextBox.Size = new System.Drawing.Size(255, 35);
+            this.phone_numberTextBox.TabIndex = 64;
+            // 
+            // delivery_methodTextBox
+            // 
+            this.delivery_methodTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "delivery_method", true));
+            this.delivery_methodTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.delivery_methodTextBox.Location = new System.Drawing.Point(894, 250);
+            this.delivery_methodTextBox.Name = "delivery_methodTextBox";
+            this.delivery_methodTextBox.Size = new System.Drawing.Size(255, 35);
+            this.delivery_methodTextBox.TabIndex = 66;
+            // 
+            // pay_methodTextBox
+            // 
+            this.pay_methodTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "pay_method", true));
+            this.pay_methodTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.pay_methodTextBox.Location = new System.Drawing.Point(894, 290);
+            this.pay_methodTextBox.Name = "pay_methodTextBox";
+            this.pay_methodTextBox.Size = new System.Drawing.Size(255, 35);
+            this.pay_methodTextBox.TabIndex = 68;
+            // 
+            // createdDateTimePicker
+            // 
+            this.createdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ordersBindingSource, "created", true));
+            this.createdDateTimePicker.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.createdDateTimePicker.Location = new System.Drawing.Point(894, 330);
+            this.createdDateTimePicker.Name = "createdDateTimePicker";
+            this.createdDateTimePicker.Size = new System.Drawing.Size(255, 35);
+            this.createdDateTimePicker.TabIndex = 72;
+            // 
+            // updatedDateTimePicker
+            // 
+            this.updatedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ordersBindingSource, "updated", true));
+            this.updatedDateTimePicker.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.updatedDateTimePicker.Location = new System.Drawing.Point(894, 370);
+            this.updatedDateTimePicker.Name = "updatedDateTimePicker";
+            this.updatedDateTimePicker.Size = new System.Drawing.Size(255, 35);
+            this.updatedDateTimePicker.TabIndex = 72;
+            // 
+            // order_itemTextBox
+            // 
+            this.order_itemTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "order_item", true));
+            this.order_itemTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold);
+            this.order_itemTextBox.Location = new System.Drawing.Point(894, 410);
+            this.order_itemTextBox.Name = "order_itemTextBox";
+            this.order_itemTextBox.Size = new System.Drawing.Size(255, 35);
+            this.order_itemTextBox.TabIndex = 74;
+            // 
+            // ordersBindingSource
+            // 
+            this.ordersBindingSource.DataMember = "orders";
+            this.ordersBindingSource.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -326,125 +451,70 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn9.HeaderText = "order_item";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // bindingNavigatorAddNewItem
+            // ordersTableAdapter
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.ordersTableAdapter.ClearBeforeFill = true;
             // 
-            // bindingNavigatorDeleteItem
+            // tableAdapterManager
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // ordersBindingNavigatorSaveItem
-            // 
-            this.ordersBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ordersBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("ordersBindingNavigatorSaveItem.Image")));
-            this.ordersBindingNavigatorSaveItem.Name = "ordersBindingNavigatorSaveItem";
-            this.ordersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.ordersBindingNavigatorSaveItem.Text = "Save Data";
-            this.ordersBindingNavigatorSaveItem.Click += new System.EventHandler(this.ordersBindingNavigatorSaveItem_Click);
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.brendTableAdapter = null;
+            this.tableAdapterManager.drug_formTableAdapter = null;
+            this.tableAdapterManager.drugsTableAdapter = null;
+            this.tableAdapterManager.ordersTableAdapter = this.ordersTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Drugstore.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.use_categoriesTableAdapter = null;
+            this.tableAdapterManager.usersTableAdapter = null;
             // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 450);
-            this.Controls.Add(this.ordersDataGridView);
-            this.Controls.Add(this.ordersBindingNavigator);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(1300, 535);
+            this.Controls.Add(idLabel);
+            this.Controls.Add(this.idTextBox);
+            this.Controls.Add(customers_full_nameLabel);
+            this.Controls.Add(this.customers_full_nameTextBox);
+            this.Controls.Add(addressLabel);
+            this.Controls.Add(this.addressTextBox);
+            this.Controls.Add(phone_numberLabel);
+            this.Controls.Add(this.phone_numberTextBox);
+            this.Controls.Add(delivery_methodLabel);
+            this.Controls.Add(this.delivery_methodTextBox);
+            this.Controls.Add(pay_methodLabel);
+            this.Controls.Add(this.pay_methodTextBox);
+            this.Controls.Add(createdLabel);
+            this.Controls.Add(this.createdDateTimePicker);
+            this.Controls.Add(updatedLabel);
+            this.Controls.Add(this.updatedDateTimePicker);
+            this.Controls.Add(order_itemLabel);
+            this.Controls.Add(this.order_itemTextBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.searchCanselButton);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.FilterInput);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.addFieldbutton);
+            this.Controls.Add(this.countLabel);
+            this.Controls.Add(this.ordersDataGridView);
             this.Name = "OrdersForm";
             this.Text = "OrdersForm";
             this.Load += new System.EventHandler(this.OrdersForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).EndInit();
-            this.ordersBindingNavigator.ResumeLayout(false);
-            this.ordersBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button7;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource ordersBindingSource;
         private DataSet1TableAdapters.ordersTableAdapter ordersTableAdapter;
         private DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator ordersBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton ordersBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView ordersDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -455,5 +525,22 @@ namespace Drugstore
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button searchCanselButton;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TextBox FilterInput;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button addFieldbutton;
+        private System.Windows.Forms.Label countLabel;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.TextBox customers_full_nameTextBox;
+        private System.Windows.Forms.TextBox addressTextBox;
+        private System.Windows.Forms.TextBox phone_numberTextBox;
+        private System.Windows.Forms.TextBox delivery_methodTextBox;
+        private System.Windows.Forms.TextBox pay_methodTextBox;
+        private System.Windows.Forms.DateTimePicker createdDateTimePicker;
+        private System.Windows.Forms.DateTimePicker updatedDateTimePicker;
+        private System.Windows.Forms.TextBox order_itemTextBox;
     }
 }

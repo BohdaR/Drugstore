@@ -36,8 +36,6 @@ namespace Drugstore {
         
         private use_categoriesDataTable tableuse_categories;
         
-        private global::System.Data.DataRelation relationFK_orders_drugs;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -316,7 +314,6 @@ namespace Drugstore {
                     this.tableuse_categories.InitVars();
                 }
             }
-            this.relationFK_orders_drugs = this.Relations["FK_orders_drugs"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,10 +336,6 @@ namespace Drugstore {
             base.Tables.Add(this.tableorders);
             this.tableuse_categories = new use_categoriesDataTable();
             base.Tables.Add(this.tableuse_categories);
-            this.relationFK_orders_drugs = new global::System.Data.DataRelation("FK_orders_drugs", new global::System.Data.DataColumn[] {
-                        this.tabledrugs.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableorders.order_itemColumn}, false);
-            this.Relations.Add(this.relationFK_orders_drugs);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1634,7 +1627,7 @@ namespace Drugstore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public drugsRow AdddrugsRow(string name, bool leave_without_a_prescription, byte[] image, string indication, string contraindication, string taking_rules, string principle_of_operation, string price, string dosage, string packaging, int rating, int use_category_id, int brend_id, int form_of_drug_id) {
+            public drugsRow AdddrugsRow(string name, bool leave_without_a_prescription, string image, string indication, string contraindication, string taking_rules, string principle_of_operation, string price, string dosage, string packaging, int rating, int use_category_id, int brend_id, int form_of_drug_id) {
                 drugsRow rowdrugsRow = ((drugsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1707,7 +1700,7 @@ namespace Drugstore {
                 base.Columns.Add(this.columnname);
                 this.columnleave_without_a_prescription = new global::System.Data.DataColumn("leave_without_a_prescription", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnleave_without_a_prescription);
-                this.columnimage = new global::System.Data.DataColumn("image", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                this.columnimage = new global::System.Data.DataColumn("image", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnimage);
                 this.columnindication = new global::System.Data.DataColumn("indication", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnindication);
@@ -1740,6 +1733,7 @@ namespace Drugstore {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnname.MaxLength = 30;
+                this.columnimage.MaxLength = 100;
                 this.columnindication.MaxLength = 100;
                 this.columncontraindication.MaxLength = 100;
                 this.columntaking_rules.MaxLength = 200;
@@ -2040,7 +2034,7 @@ namespace Drugstore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ordersRow AddordersRow(string customers_full_name, string address, int phone_number, string delivery_method, string pay_method, System.DateTime created, System.DateTime updated, drugsRow parentdrugsRowByFK_orders_drugs) {
+            public ordersRow AddordersRow(string customers_full_name, string address, int phone_number, string delivery_method, string pay_method, System.DateTime created, System.DateTime updated, int order_item) {
                 ordersRow rowordersRow = ((ordersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2051,10 +2045,7 @@ namespace Drugstore {
                         pay_method,
                         created,
                         updated,
-                        null};
-                if ((parentdrugsRowByFK_orders_drugs != null)) {
-                    columnValuesArray[8] = parentdrugsRowByFK_orders_drugs[0];
-                }
+                        order_item};
                 rowordersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowordersRow);
                 return rowordersRow;
@@ -2926,10 +2917,10 @@ namespace Drugstore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public byte[] image {
+            public string image {
                 get {
                     try {
-                        return ((byte[])(this[this.tabledrugs.imageColumn]));
+                        return ((string)(this[this.tabledrugs.imageColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'image\' in table \'drugs\' is DBNull.", e);
@@ -3283,17 +3274,6 @@ namespace Drugstore {
             public void Setform_of_drug_idNull() {
                 this[this.tabledrugs.form_of_drug_idColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ordersRow[] GetordersRows() {
-                if ((this.Table.ChildRelations["FK_orders_drugs"] == null)) {
-                    return new ordersRow[0];
-                }
-                else {
-                    return ((ordersRow[])(base.GetChildRows(this.Table.ChildRelations["FK_orders_drugs"])));
-                }
-            }
         }
         
         /// <summary>
@@ -3431,17 +3411,6 @@ namespace Drugstore {
                 }
                 set {
                     this[this.tableorders.order_itemColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public drugsRow drugsRow {
-                get {
-                    return ((drugsRow)(this.GetParentRow(this.Table.ParentRelations["FK_orders_drugs"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_orders_drugs"]);
                 }
             }
             
@@ -5163,13 +5132,15 @@ SELECT id, name, description FROM drug_form WHERE (id = @id)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[drugs] WHERE (([Id] = @Original_Id) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_leave_without_a_prescription = 1 AND [leave_without_a_prescription] IS NULL) OR ([leave_without_a_prescription] = @Original_leave_without_a_prescription)) AND ((@IsNull_indication = 1 AND [indication] IS NULL) OR ([indication] = @Original_indication)) AND ((@IsNull_contraindication = 1 AND [contraindication] IS NULL) OR ([contraindication] = @Original_contraindication)) AND ((@IsNull_taking_rules = 1 AND [taking_rules] IS NULL) OR ([taking_rules] = @Original_taking_rules)) AND ((@IsNull_principle_of_operation = 1 AND [principle_of_operation] IS NULL) OR ([principle_of_operation] = @Original_principle_of_operation)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)) AND ((@IsNull_dosage = 1 AND [dosage] IS NULL) OR ([dosage] = @Original_dosage)) AND ((@IsNull_packaging = 1 AND [packaging] IS NULL) OR ([packaging] = @Original_packaging)) AND ((@IsNull_rating = 1 AND [rating] IS NULL) OR ([rating] = @Original_rating)) AND ((@IsNull_use_category_id = 1 AND [use_category_id] IS NULL) OR ([use_category_id] = @Original_use_category_id)) AND ((@IsNull_brend_id = 1 AND [brend_id] IS NULL) OR ([brend_id] = @Original_brend_id)) AND ((@IsNull_form_of_drug_id = 1 AND [form_of_drug_id] IS NULL) OR ([form_of_drug_id] = @Original_form_of_drug_id)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[drugs] WHERE (([Id] = @Original_Id) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_leave_without_a_prescription = 1 AND [leave_without_a_prescription] IS NULL) OR ([leave_without_a_prescription] = @Original_leave_without_a_prescription)) AND ((@IsNull_image = 1 AND [image] IS NULL) OR ([image] = @Original_image)) AND ((@IsNull_indication = 1 AND [indication] IS NULL) OR ([indication] = @Original_indication)) AND ((@IsNull_contraindication = 1 AND [contraindication] IS NULL) OR ([contraindication] = @Original_contraindication)) AND ((@IsNull_taking_rules = 1 AND [taking_rules] IS NULL) OR ([taking_rules] = @Original_taking_rules)) AND ((@IsNull_principle_of_operation = 1 AND [principle_of_operation] IS NULL) OR ([principle_of_operation] = @Original_principle_of_operation)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)) AND ((@IsNull_dosage = 1 AND [dosage] IS NULL) OR ([dosage] = @Original_dosage)) AND ((@IsNull_packaging = 1 AND [packaging] IS NULL) OR ([packaging] = @Original_packaging)) AND ((@IsNull_rating = 1 AND [rating] IS NULL) OR ([rating] = @Original_rating)) AND ((@IsNull_use_category_id = 1 AND [use_category_id] IS NULL) OR ([use_category_id] = @Original_use_category_id)) AND ((@IsNull_brend_id = 1 AND [brend_id] IS NULL) OR ([brend_id] = @Original_brend_id)) AND ((@IsNull_form_of_drug_id = 1 AND [form_of_drug_id] IS NULL) OR ([form_of_drug_id] = @Original_form_of_drug_id)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_leave_without_a_prescription", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leave_without_a_prescription", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_leave_without_a_prescription", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leave_without_a_prescription", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_image", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_image", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_indication", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "indication", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_indication", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "indication", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contraindication", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contraindication", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -5199,7 +5170,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leave_without_a_prescription", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leave_without_a_prescription", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@image", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@indication", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "indication", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contraindication", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contraindication", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@taking_rules", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "taking_rules", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5222,28 +5193,28 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                 "l_Id) AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) A" +
                 "ND ((@IsNull_leave_without_a_prescription = 1 AND [leave_without_a_prescription]" +
                 " IS NULL) OR ([leave_without_a_prescription] = @Original_leave_without_a_prescri" +
-                "ption)) AND ((@IsNull_indication = 1 AND [indication] IS NULL) OR ([indication] " +
-                "= @Original_indication)) AND ((@IsNull_contraindication = 1 AND [contraindicatio" +
-                "n] IS NULL) OR ([contraindication] = @Original_contraindication)) AND ((@IsNull_" +
-                "taking_rules = 1 AND [taking_rules] IS NULL) OR ([taking_rules] = @Original_taki" +
-                "ng_rules)) AND ((@IsNull_principle_of_operation = 1 AND [principle_of_operation]" +
-                " IS NULL) OR ([principle_of_operation] = @Original_principle_of_operation)) AND " +
-                "((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)) AND ((@" +
-                "IsNull_dosage = 1 AND [dosage] IS NULL) OR ([dosage] = @Original_dosage)) AND ((" +
-                "@IsNull_packaging = 1 AND [packaging] IS NULL) OR ([packaging] = @Original_packa" +
-                "ging)) AND ((@IsNull_rating = 1 AND [rating] IS NULL) OR ([rating] = @Original_r" +
-                "ating)) AND ((@IsNull_use_category_id = 1 AND [use_category_id] IS NULL) OR ([us" +
-                "e_category_id] = @Original_use_category_id)) AND ((@IsNull_brend_id = 1 AND [bre" +
-                "nd_id] IS NULL) OR ([brend_id] = @Original_brend_id)) AND ((@IsNull_form_of_drug" +
-                "_id = 1 AND [form_of_drug_id] IS NULL) OR ([form_of_drug_id] = @Original_form_of" +
-                "_drug_id)));\r\nSELECT Id, name, leave_without_a_prescription, image, indication, " +
-                "contraindication, taking_rules, principle_of_operation, price, dosage, packaging" +
-                ", rating, use_category_id, brend_id, form_of_drug_id FROM drugs WHERE (Id = @Id)" +
-                "";
+                "ption)) AND ((@IsNull_image = 1 AND [image] IS NULL) OR ([image] = @Original_ima" +
+                "ge)) AND ((@IsNull_indication = 1 AND [indication] IS NULL) OR ([indication] = @" +
+                "Original_indication)) AND ((@IsNull_contraindication = 1 AND [contraindication] " +
+                "IS NULL) OR ([contraindication] = @Original_contraindication)) AND ((@IsNull_tak" +
+                "ing_rules = 1 AND [taking_rules] IS NULL) OR ([taking_rules] = @Original_taking_" +
+                "rules)) AND ((@IsNull_principle_of_operation = 1 AND [principle_of_operation] IS" +
+                " NULL) OR ([principle_of_operation] = @Original_principle_of_operation)) AND ((@" +
+                "IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)) AND ((@IsN" +
+                "ull_dosage = 1 AND [dosage] IS NULL) OR ([dosage] = @Original_dosage)) AND ((@Is" +
+                "Null_packaging = 1 AND [packaging] IS NULL) OR ([packaging] = @Original_packagin" +
+                "g)) AND ((@IsNull_rating = 1 AND [rating] IS NULL) OR ([rating] = @Original_rati" +
+                "ng)) AND ((@IsNull_use_category_id = 1 AND [use_category_id] IS NULL) OR ([use_c" +
+                "ategory_id] = @Original_use_category_id)) AND ((@IsNull_brend_id = 1 AND [brend_" +
+                "id] IS NULL) OR ([brend_id] = @Original_brend_id)) AND ((@IsNull_form_of_drug_id" +
+                " = 1 AND [form_of_drug_id] IS NULL) OR ([form_of_drug_id] = @Original_form_of_dr" +
+                "ug_id)));\r\nSELECT Id, name, leave_without_a_prescription, image, indication, con" +
+                "traindication, taking_rules, principle_of_operation, price, dosage, packaging, r" +
+                "ating, use_category_id, brend_id, form_of_drug_id FROM drugs WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leave_without_a_prescription", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leave_without_a_prescription", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@image", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@indication", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "indication", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contraindication", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contraindication", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@taking_rules", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "taking_rules", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5260,6 +5231,8 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_leave_without_a_prescription", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leave_without_a_prescription", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_leave_without_a_prescription", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leave_without_a_prescription", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_image", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_image", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_indication", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "indication", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_indication", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "indication", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contraindication", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contraindication", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -5361,7 +5334,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_name, global::System.Nullable<bool> Original_leave_without_a_prescription, string Original_indication, string Original_contraindication, string Original_taking_rules, string Original_principle_of_operation, string Original_price, string Original_dosage, string Original_packaging, global::System.Nullable<int> Original_rating, global::System.Nullable<int> Original_use_category_id, global::System.Nullable<int> Original_brend_id, global::System.Nullable<int> Original_form_of_drug_id) {
+        public virtual int Delete(int Original_Id, string Original_name, global::System.Nullable<bool> Original_leave_without_a_prescription, string Original_image, string Original_indication, string Original_contraindication, string Original_taking_rules, string Original_principle_of_operation, string Original_price, string Original_dosage, string Original_packaging, global::System.Nullable<int> Original_rating, global::System.Nullable<int> Original_use_category_id, global::System.Nullable<int> Original_brend_id, global::System.Nullable<int> Original_form_of_drug_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -5379,93 +5352,101 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_indication == null)) {
+            if ((Original_image == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_indication));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_image));
             }
-            if ((Original_contraindication == null)) {
+            if ((Original_indication == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_contraindication));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_indication));
             }
-            if ((Original_taking_rules == null)) {
+            if ((Original_contraindication == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_taking_rules));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_contraindication));
             }
-            if ((Original_principle_of_operation == null)) {
+            if ((Original_taking_rules == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_principle_of_operation));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_taking_rules));
             }
-            if ((Original_price == null)) {
+            if ((Original_principle_of_operation == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_price));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_principle_of_operation));
             }
-            if ((Original_dosage == null)) {
+            if ((Original_price == null)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_dosage));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_price));
             }
-            if ((Original_packaging == null)) {
+            if ((Original_dosage == null)) {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_packaging));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_dosage));
             }
-            if ((Original_rating.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_rating.Value));
-            }
-            else {
+            if ((Original_packaging == null)) {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((Original_use_category_id.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_packaging));
+            }
+            if ((Original_rating.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_use_category_id.Value));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_rating.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((Original_brend_id.HasValue == true)) {
+            if ((Original_use_category_id.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((int)(Original_brend_id.Value));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((int)(Original_use_category_id.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((Original_form_of_drug_id.HasValue == true)) {
+            if ((Original_brend_id.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((int)(Original_form_of_drug_id.Value));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((int)(Original_brend_id.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((Original_form_of_drug_id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((int)(Original_form_of_drug_id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5487,7 +5468,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string name, global::System.Nullable<bool> leave_without_a_prescription, byte[] image, string indication, string contraindication, string taking_rules, string principle_of_operation, string price, string dosage, string packaging, global::System.Nullable<int> rating, global::System.Nullable<int> use_category_id, global::System.Nullable<int> brend_id, global::System.Nullable<int> form_of_drug_id) {
+        public virtual int Insert(string name, global::System.Nullable<bool> leave_without_a_prescription, string image, string indication, string contraindication, string taking_rules, string principle_of_operation, string price, string dosage, string packaging, global::System.Nullable<int> rating, global::System.Nullable<int> use_category_id, global::System.Nullable<int> brend_id, global::System.Nullable<int> form_of_drug_id) {
             if ((name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5504,7 +5485,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((byte[])(image));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(image));
             }
             if ((indication == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -5595,7 +5576,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
         public virtual int Update(
                     string name, 
                     global::System.Nullable<bool> leave_without_a_prescription, 
-                    byte[] image, 
+                    string image, 
                     string indication, 
                     string contraindication, 
                     string taking_rules, 
@@ -5610,6 +5591,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                     int Original_Id, 
                     string Original_name, 
                     global::System.Nullable<bool> Original_leave_without_a_prescription, 
+                    string Original_image, 
                     string Original_indication, 
                     string Original_contraindication, 
                     string Original_taking_rules, 
@@ -5638,7 +5620,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((byte[])(image));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(image));
             }
             if ((indication == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -5723,95 +5705,103 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((Original_indication == null)) {
+            if ((Original_image == null)) {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_indication));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_image));
             }
-            if ((Original_contraindication == null)) {
+            if ((Original_indication == null)) {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_contraindication));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_indication));
             }
-            if ((Original_taking_rules == null)) {
+            if ((Original_contraindication == null)) {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_taking_rules));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_contraindication));
             }
-            if ((Original_principle_of_operation == null)) {
+            if ((Original_taking_rules == null)) {
                 this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_principle_of_operation));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_taking_rules));
             }
-            if ((Original_price == null)) {
+            if ((Original_principle_of_operation == null)) {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_price));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_principle_of_operation));
             }
-            if ((Original_dosage == null)) {
+            if ((Original_price == null)) {
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_dosage));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_price));
             }
-            if ((Original_packaging == null)) {
+            if ((Original_dosage == null)) {
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_packaging));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_dosage));
             }
-            if ((Original_rating.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_rating.Value));
-            }
-            else {
+            if ((Original_packaging == null)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            if ((Original_use_category_id.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_packaging));
+            }
+            if ((Original_rating.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_use_category_id.Value));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_rating.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
-            if ((Original_brend_id.HasValue == true)) {
+            if ((Original_use_category_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_brend_id.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_use_category_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
-            if ((Original_form_of_drug_id.HasValue == true)) {
+            if ((Original_brend_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((int)(Original_form_of_drug_id.Value));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((int)(Original_brend_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(Id));
+            if ((Original_form_of_drug_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_form_of_drug_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[43].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5835,7 +5825,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
         public virtual int Update(
                     string name, 
                     global::System.Nullable<bool> leave_without_a_prescription, 
-                    byte[] image, 
+                    string image, 
                     string indication, 
                     string contraindication, 
                     string taking_rules, 
@@ -5850,6 +5840,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                     int Original_Id, 
                     string Original_name, 
                     global::System.Nullable<bool> Original_leave_without_a_prescription, 
+                    string Original_image, 
                     string Original_indication, 
                     string Original_contraindication, 
                     string Original_taking_rules, 
@@ -5861,7 +5852,7 @@ SELECT Id, name, leave_without_a_prescription, image, indication, contraindicati
                     global::System.Nullable<int> Original_use_category_id, 
                     global::System.Nullable<int> Original_brend_id, 
                     global::System.Nullable<int> Original_form_of_drug_id) {
-            return this.Update(name, leave_without_a_prescription, image, indication, contraindication, taking_rules, principle_of_operation, price, dosage, packaging, rating, use_category_id, brend_id, form_of_drug_id, Original_Id, Original_name, Original_leave_without_a_prescription, Original_indication, Original_contraindication, Original_taking_rules, Original_principle_of_operation, Original_price, Original_dosage, Original_packaging, Original_rating, Original_use_category_id, Original_brend_id, Original_form_of_drug_id, Original_Id);
+            return this.Update(name, leave_without_a_prescription, image, indication, contraindication, taking_rules, principle_of_operation, price, dosage, packaging, rating, use_category_id, brend_id, form_of_drug_id, Original_Id, Original_name, Original_leave_without_a_prescription, Original_image, Original_indication, Original_contraindication, Original_taking_rules, Original_principle_of_operation, Original_price, Original_dosage, Original_packaging, Original_rating, Original_use_category_id, Original_brend_id, Original_form_of_drug_id, Original_Id);
         }
     }
     
@@ -6979,15 +6970,6 @@ SELECT id, customers_full_name, address, phone_number, delivery_method, pay_meth
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._drugsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.drugs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._drugsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._brendTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.brend.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -7012,6 +6994,15 @@ SELECT id, customers_full_name, address, phone_number, delivery_method, pay_meth
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._drug_formTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._drugsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.drugs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._drugsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7043,14 +7034,6 @@ SELECT id, customers_full_name, address, phone_number, delivery_method, pay_meth
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._drugsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.drugs.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._drugsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._brendTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.brend.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -7072,6 +7055,14 @@ SELECT id, customers_full_name, address, phone_number, delivery_method, pay_meth
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._drug_formTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._drugsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.drugs.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._drugsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -7117,6 +7108,14 @@ SELECT id, customers_full_name, address, phone_number, delivery_method, pay_meth
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._drugsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.drugs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._drugsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._drug_formTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.drug_form.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -7138,14 +7137,6 @@ SELECT id, customers_full_name, address, phone_number, delivery_method, pay_meth
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._brendTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._drugsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.drugs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._drugsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

@@ -9,7 +9,7 @@ namespace Drugstore
 {
     class DB
     {
-        SqlConnection connection = new SqlConnection(Properties.Settings.Default.drugstoreConnectionString);
+        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.drugstoreConnectionString);
 
         public void openConnection()
         {

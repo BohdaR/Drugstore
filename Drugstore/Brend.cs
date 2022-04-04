@@ -94,6 +94,8 @@ namespace Drugstore
         }
 
         // оголошення методів
+
+        // пошук
         public DataSet search_brend(string request=null)
         {
             DataSet dataSet = new DataSet();
@@ -108,37 +110,44 @@ namespace Drugstore
             return dataSet;
         }
 
-        public void create_brend(string request)
+        // створення
+        public void create_brend(string name, string country, string company_profit = null, string manufacturers_products = null, int rating = 5)
         {
-            SqlCommand command = new SqlCommand("INSERT INTO brend (name) VALUES (@name)", getConnection());
-            command.Parameters.Add("@name", SqlDbType.NChar).Value = request;
+            SqlCommand command = new SqlCommand("INSERT INTO brend (name, country, company_profit, manufacturers_products, rating) VALUES (@name, @country, @company_profit, @manufacturers_products, @rating)", getConnection());
+            command.Parameters.Add("@name", SqlDbType.NChar).Value = name;
+            command.Parameters.Add("@country", SqlDbType.NChar).Value = country;
+            command.Parameters.Add("@company_profit", SqlDbType.Money).Value = company_profit;
+            command.Parameters.Add("@manufacturers_products", SqlDbType.NChar).Value = manufacturers_products;
+            command.Parameters.Add("@rating", SqlDbType.Int).Value = rating;
 
             openConnection();
 
             if (command.ExecuteNonQuery() == 1)
-                MessageBox.Show("Обліковий запис успішно створено\n");
+                MessageBox.Show("Бренд успішно додано\n");
             else
-                MessageBox.Show("Обліковий запис не створено\n");
+                MessageBox.Show("Бренд не додано\n");
 
             closeConnection();
         }
 
-        public void delete_brend(string request)
+        // видалення
+        public void delete_brend(string id)
         {
-            SqlCommand command = new SqlCommand("DELETE FROM brend WHERE name = @name", getConnection());
-            command.Parameters.Add("@name", SqlDbType.NChar).Value = request;
+            SqlCommand command = new SqlCommand("DELETE FROM brend WHERE id = @id", getConnection());
+            command.Parameters.Add("@id", SqlDbType.NChar).Value = Int16.Parse(id);
 
             openConnection();
 
             if (command.ExecuteNonQuery() == 1)
-                MessageBox.Show("Обліковий запис успішно видалено\n");
+                MessageBox.Show("Бренд видалено\n");
             else
-                MessageBox.Show("Обліковий запис не видалено\n");
+                MessageBox.Show("Бренд не видалено\n");
 
             closeConnection();
         }
 
-        public void update_brend(int id, string name, string country, string company_profit, string manufacturers_products = "N/A", int rating=5)
+        // редагування
+        public void update_brend(int id, string name, string country, string company_profit = null, string manufacturers_products = "N/A", int rating=5)
         {
             SqlCommand command = new SqlCommand("UPDATE brend SET name = @name, country = @country, company_profit = @company_profit, manufacturers_products = @manufacturers_products, rating = @rating WHERE id = @id", getConnection());
             command.Parameters.Add("@id", SqlDbType.Int).Value = id;
@@ -151,9 +160,9 @@ namespace Drugstore
             openConnection();
 
             if (command.ExecuteNonQuery() == 1)
-                MessageBox.Show("Обліковий запис успішно видалено\n");
+                MessageBox.Show("Дані обновлено\n");
             else
-                MessageBox.Show("Обліковий запис не видалено\n");
+                MessageBox.Show("Дані не обновлено\n");
 
             closeConnection();
         }

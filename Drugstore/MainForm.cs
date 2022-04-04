@@ -74,8 +74,7 @@ namespace Drugstore
 
         private void workerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UsersForm usersForm = new UsersForm();
-            usersForm.ShowDialog();
+
         }
     }
 }

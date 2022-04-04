@@ -37,19 +37,62 @@ namespace Drugstore
         {
             // TODO: This line of code loads data into the 'dataSet1.brend' table. You can move, or remove it, as needed.
             this.brendTableAdapter.Fill(this.dataSet1.brend);
+            // TODO: This line of code loads data into the 'dataSet1.drug_form' table. You can move, or remove it, as needed.
+            this.brendTableAdapter.Fill(this.dataSet1.brend);
 
+            countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
         }
 
-        private void FilterButton_Click(object sender, EventArgs e)
-        {
-            Brend brend = new Brend();
-            brendDataGridView.DataSource = brend.search_brend(FilterInput.Text).Tables[0];
-        }
+        
 
         private void searchCanselButton_Click(object sender, EventArgs e)
         {
-            Brend brend = new Brend();
-            brendDataGridView.DataSource = brend.search_brend().Tables[0];
+            brendBindingSource.Filter = null;
+            FilterInput.Clear();
+
+            countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
         }
+
+        private void addFieldbutton_Click(object sender, EventArgs e)
+        {
+            brendBindingSource.AddNew();
+        }
+
+        private void brendUpdateButton_Click(object sender, EventArgs e)
+        {
+            this.tableAdapterManager.UpdateAll(this.dataSet1);
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in brendDataGridView.SelectedRows)
+            {
+                brendDataGridView.Rows.RemoveAt(row.Index);
+            }
+
+            brendBindingSource.EndEdit();
+            brendTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            brendBindingSource.EndEdit();
+            brendTableAdapter.Update(dataSet1);
+
+            countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            brendBindingSource.Filter = "name LIKE\'%" + FilterInput.Text + "%\'";
+        }
+
+        private void company_profitLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

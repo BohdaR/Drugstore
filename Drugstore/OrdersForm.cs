@@ -31,5 +31,10 @@ namespace Drugstore
             this.ordersTableAdapter.Fill(this.dataSet1.orders);
 
         }
+
+        private void createdLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
