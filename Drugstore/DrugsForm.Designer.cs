@@ -41,14 +41,10 @@ namespace Drugstore
             System.Windows.Forms.Label dosageLabel;
             System.Windows.Forms.Label packagingLabel;
             System.Windows.Forms.Label ratingLabel;
+            System.Windows.Forms.Label imageLabel;
             System.Windows.Forms.Label use_category_idLabel;
             System.Windows.Forms.Label brend_idLabel;
             System.Windows.Forms.Label form_of_drug_idLabel;
-            System.Windows.Forms.Label imageLabel;
-            this.dataSet1 = new Drugstore.DataSet1();
-            this.drugsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.drugsTableAdapter = new Drugstore.DataSet1TableAdapters.drugsTableAdapter();
-            this.tableAdapterManager = new Drugstore.DataSet1TableAdapters.TableAdapterManager();
             this.label1 = new System.Windows.Forms.Label();
             this.searchCanselButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
@@ -58,6 +54,8 @@ namespace Drugstore
             this.addFieldbutton = new System.Windows.Forms.Button();
             this.countLabel = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.drugsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Drugstore.DataSet1();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.leave_without_a_prescriptionCheckBox = new System.Windows.Forms.CheckBox();
             this.indicationTextBox = new System.Windows.Forms.TextBox();
@@ -68,9 +66,6 @@ namespace Drugstore
             this.dosageTextBox = new System.Windows.Forms.TextBox();
             this.packagingTextBox = new System.Windows.Forms.TextBox();
             this.ratingTextBox = new System.Windows.Forms.TextBox();
-            this.use_category_idTextBox = new System.Windows.Forms.TextBox();
-            this.brend_idTextBox = new System.Windows.Forms.TextBox();
-            this.form_of_drug_idTextBox = new System.Windows.Forms.TextBox();
             this.drugsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,6 +83,11 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageTextBox = new System.Windows.Forms.TextBox();
+            this.drugsTableAdapter = new Drugstore.DataSet1TableAdapters.drugsTableAdapter();
+            this.tableAdapterManager = new Drugstore.DataSet1TableAdapters.TableAdapterManager();
+            this.use_category_idComboBox = new System.Windows.Forms.ComboBox();
+            this.brend_idComboBox = new System.Windows.Forms.ComboBox();
+            this.form_of_drug_idComboBox = new System.Windows.Forms.ComboBox();
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             leave_without_a_prescriptionLabel = new System.Windows.Forms.Label();
@@ -99,12 +99,12 @@ namespace Drugstore
             dosageLabel = new System.Windows.Forms.Label();
             packagingLabel = new System.Windows.Forms.Label();
             ratingLabel = new System.Windows.Forms.Label();
+            imageLabel = new System.Windows.Forms.Label();
             use_category_idLabel = new System.Windows.Forms.Label();
             brend_idLabel = new System.Windows.Forms.Label();
             form_of_drug_idLabel = new System.Windows.Forms.Label();
-            imageLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drugsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drugsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,39 +229,6 @@ namespace Drugstore
             ratingLabel.TabIndex = 77;
             ratingLabel.Text = "rating:";
             // 
-            // use_category_idLabel
-            // 
-            use_category_idLabel.AutoSize = true;
-            use_category_idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            use_category_idLabel.ForeColor = System.Drawing.SystemColors.Control;
-            use_category_idLabel.Location = new System.Drawing.Point(825, 567);
-            use_category_idLabel.Name = "use_category_idLabel";
-            use_category_idLabel.Size = new System.Drawing.Size(163, 27);
-            use_category_idLabel.TabIndex = 79;
-            use_category_idLabel.Text = "use category id:";
-            // 
-            // brend_idLabel
-            // 
-            brend_idLabel.AutoSize = true;
-            brend_idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            brend_idLabel.ForeColor = System.Drawing.SystemColors.Control;
-            brend_idLabel.Location = new System.Drawing.Point(825, 607);
-            brend_idLabel.Name = "brend_idLabel";
-            brend_idLabel.Size = new System.Drawing.Size(96, 27);
-            brend_idLabel.TabIndex = 81;
-            brend_idLabel.Text = "brend id:";
-            // 
-            // form_of_drug_idLabel
-            // 
-            form_of_drug_idLabel.AutoSize = true;
-            form_of_drug_idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            form_of_drug_idLabel.ForeColor = System.Drawing.SystemColors.Control;
-            form_of_drug_idLabel.Location = new System.Drawing.Point(825, 647);
-            form_of_drug_idLabel.Name = "form_of_drug_idLabel";
-            form_of_drug_idLabel.Size = new System.Drawing.Size(164, 27);
-            form_of_drug_idLabel.TabIndex = 83;
-            form_of_drug_idLabel.Text = "form of drug id:";
-            // 
             // imageLabel
             // 
             imageLabel.AutoSize = true;
@@ -273,30 +240,39 @@ namespace Drugstore
             imageLabel.TabIndex = 84;
             imageLabel.Text = "image:";
             // 
-            // dataSet1
+            // use_category_idLabel
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            use_category_idLabel.AutoSize = true;
+            use_category_idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            use_category_idLabel.ForeColor = System.Drawing.SystemColors.Control;
+            use_category_idLabel.Location = new System.Drawing.Point(825, 567);
+            use_category_idLabel.Name = "use_category_idLabel";
+            use_category_idLabel.Size = new System.Drawing.Size(163, 27);
+            use_category_idLabel.TabIndex = 85;
+            use_category_idLabel.Text = "use category id:";
+            use_category_idLabel.Click += new System.EventHandler(this.use_category_idLabel_Click);
             // 
-            // drugsBindingSource
+            // brend_idLabel
             // 
-            this.drugsBindingSource.DataMember = "drugs";
-            this.drugsBindingSource.DataSource = this.dataSet1;
+            brend_idLabel.AutoSize = true;
+            brend_idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            brend_idLabel.ForeColor = System.Drawing.SystemColors.Control;
+            brend_idLabel.Location = new System.Drawing.Point(825, 607);
+            brend_idLabel.Name = "brend_idLabel";
+            brend_idLabel.Size = new System.Drawing.Size(96, 27);
+            brend_idLabel.TabIndex = 86;
+            brend_idLabel.Text = "brend id:";
             // 
-            // drugsTableAdapter
+            // form_of_drug_idLabel
             // 
-            this.drugsTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.brendTableAdapter = null;
-            this.tableAdapterManager.drug_formTableAdapter = null;
-            this.tableAdapterManager.drugsTableAdapter = this.drugsTableAdapter;
-            this.tableAdapterManager.ordersTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Drugstore.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.use_categoriesTableAdapter = null;
-            this.tableAdapterManager.usersTableAdapter = null;
+            form_of_drug_idLabel.AutoSize = true;
+            form_of_drug_idLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            form_of_drug_idLabel.ForeColor = System.Drawing.SystemColors.Control;
+            form_of_drug_idLabel.Location = new System.Drawing.Point(825, 647);
+            form_of_drug_idLabel.Name = "form_of_drug_idLabel";
+            form_of_drug_idLabel.Size = new System.Drawing.Size(164, 27);
+            form_of_drug_idLabel.TabIndex = 87;
+            form_of_drug_idLabel.Text = "form of drug id:";
             // 
             // label1
             // 
@@ -413,6 +389,16 @@ namespace Drugstore
             this.idTextBox.Size = new System.Drawing.Size(172, 34);
             this.idTextBox.TabIndex = 58;
             // 
+            // drugsBindingSource
+            // 
+            this.drugsBindingSource.DataMember = "drugs";
+            this.drugsBindingSource.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "name", true));
@@ -506,33 +492,6 @@ namespace Drugstore
             this.ratingTextBox.Name = "ratingTextBox";
             this.ratingTextBox.Size = new System.Drawing.Size(172, 34);
             this.ratingTextBox.TabIndex = 78;
-            // 
-            // use_category_idTextBox
-            // 
-            this.use_category_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "use_category_id", true));
-            this.use_category_idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.use_category_idTextBox.Location = new System.Drawing.Point(1105, 567);
-            this.use_category_idTextBox.Name = "use_category_idTextBox";
-            this.use_category_idTextBox.Size = new System.Drawing.Size(172, 34);
-            this.use_category_idTextBox.TabIndex = 80;
-            // 
-            // brend_idTextBox
-            // 
-            this.brend_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "brend_id", true));
-            this.brend_idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.brend_idTextBox.Location = new System.Drawing.Point(1105, 607);
-            this.brend_idTextBox.Name = "brend_idTextBox";
-            this.brend_idTextBox.Size = new System.Drawing.Size(172, 34);
-            this.brend_idTextBox.TabIndex = 82;
-            // 
-            // form_of_drug_idTextBox
-            // 
-            this.form_of_drug_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "form_of_drug_id", true));
-            this.form_of_drug_idTextBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.form_of_drug_idTextBox.Location = new System.Drawing.Point(1105, 647);
-            this.form_of_drug_idTextBox.Name = "form_of_drug_idTextBox";
-            this.form_of_drug_idTextBox.Size = new System.Drawing.Size(172, 34);
-            this.form_of_drug_idTextBox.TabIndex = 84;
             // 
             // drugsDataGridView
             // 
@@ -660,12 +619,63 @@ namespace Drugstore
             this.imageTextBox.Size = new System.Drawing.Size(172, 34);
             this.imageTextBox.TabIndex = 85;
             // 
+            // drugsTableAdapter
+            // 
+            this.drugsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.brendTableAdapter = null;
+            this.tableAdapterManager.drug_formTableAdapter = null;
+            this.tableAdapterManager.drugsTableAdapter = this.drugsTableAdapter;
+            this.tableAdapterManager.ordersTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Drugstore.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.use_categoriesTableAdapter = null;
+            this.tableAdapterManager.usersTableAdapter = null;
+            // 
+            // use_category_idComboBox
+            // 
+            this.use_category_idComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "use_category_id", true));
+            this.use_category_idComboBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.use_category_idComboBox.FormattingEnabled = true;
+            this.use_category_idComboBox.Location = new System.Drawing.Point(1105, 567);
+            this.use_category_idComboBox.Name = "use_category_idComboBox";
+            this.use_category_idComboBox.Size = new System.Drawing.Size(172, 35);
+            this.use_category_idComboBox.TabIndex = 86;
+            // 
+            // brend_idComboBox
+            // 
+            this.brend_idComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "brend_id", true));
+            this.brend_idComboBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.brend_idComboBox.FormattingEnabled = true;
+            this.brend_idComboBox.Location = new System.Drawing.Point(1105, 607);
+            this.brend_idComboBox.Name = "brend_idComboBox";
+            this.brend_idComboBox.Size = new System.Drawing.Size(172, 35);
+            this.brend_idComboBox.TabIndex = 87;
+            // 
+            // form_of_drug_idComboBox
+            // 
+            this.form_of_drug_idComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.drugsBindingSource, "form_of_drug_id", true));
+            this.form_of_drug_idComboBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.form_of_drug_idComboBox.FormattingEnabled = true;
+            this.form_of_drug_idComboBox.Location = new System.Drawing.Point(1105, 647);
+            this.form_of_drug_idComboBox.Name = "form_of_drug_idComboBox";
+            this.form_of_drug_idComboBox.Size = new System.Drawing.Size(172, 35);
+            this.form_of_drug_idComboBox.TabIndex = 88;
+            // 
             // DrugsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1291, 763);
+            this.ClientSize = new System.Drawing.Size(1371, 763);
+            this.Controls.Add(form_of_drug_idLabel);
+            this.Controls.Add(this.form_of_drug_idComboBox);
+            this.Controls.Add(brend_idLabel);
+            this.Controls.Add(this.brend_idComboBox);
+            this.Controls.Add(use_category_idLabel);
+            this.Controls.Add(this.use_category_idComboBox);
             this.Controls.Add(imageLabel);
             this.Controls.Add(this.imageTextBox);
             this.Controls.Add(this.drugsDataGridView);
@@ -691,12 +701,6 @@ namespace Drugstore
             this.Controls.Add(this.packagingTextBox);
             this.Controls.Add(ratingLabel);
             this.Controls.Add(this.ratingTextBox);
-            this.Controls.Add(use_category_idLabel);
-            this.Controls.Add(this.use_category_idTextBox);
-            this.Controls.Add(brend_idLabel);
-            this.Controls.Add(this.brend_idTextBox);
-            this.Controls.Add(form_of_drug_idLabel);
-            this.Controls.Add(this.form_of_drug_idTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchCanselButton);
             this.Controls.Add(this.searchButton);
@@ -709,8 +713,8 @@ namespace Drugstore
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DrugsForm";
             this.Load += new System.EventHandler(this.DrugsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drugsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drugsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -742,9 +746,6 @@ namespace Drugstore
         private System.Windows.Forms.TextBox dosageTextBox;
         private System.Windows.Forms.TextBox packagingTextBox;
         private System.Windows.Forms.TextBox ratingTextBox;
-        private System.Windows.Forms.TextBox use_category_idTextBox;
-        private System.Windows.Forms.TextBox brend_idTextBox;
-        private System.Windows.Forms.TextBox form_of_drug_idTextBox;
         private System.Windows.Forms.DataGridView drugsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -762,5 +763,8 @@ namespace Drugstore
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.TextBox imageTextBox;
+        private System.Windows.Forms.ComboBox use_category_idComboBox;
+        private System.Windows.Forms.ComboBox brend_idComboBox;
+        private System.Windows.Forms.ComboBox form_of_drug_idComboBox;
     }
 }
