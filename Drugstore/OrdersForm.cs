@@ -34,7 +34,15 @@ namespace Drugstore
 
         private void addFieldbutton_Click(object sender, EventArgs e)
         {
-            ordersBindingSource.AddNew();
+            try
+            {
+                ordersBindingSource.AddNew();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

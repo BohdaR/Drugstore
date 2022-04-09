@@ -74,9 +74,15 @@ namespace Drugstore
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            drugsBindingSource.EndEdit();
-            drugsTableAdapter.Update(dataSet1);
-
+            try
+            {
+                drugsBindingSource.EndEdit();
+                drugsTableAdapter.Update(dataSet1);
+            }
+            catch
+            {
+                MessageBox.Show("невірно", "Невірно", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             countLabel.Text = $"Усього: {drugsDataGridView.Rows.Count - 1}";
         }
 

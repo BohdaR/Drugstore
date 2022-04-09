@@ -307,7 +307,7 @@ namespace Drugstore
             this.Controls.Add(this.drug_formDataGridView);
             this.Name = "DrugFormForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DrugFormForm1cs";
+            this.Text = "Form of drug";
             this.Load += new System.EventHandler(this.DrugFormForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drug_formBindingSource)).EndInit();

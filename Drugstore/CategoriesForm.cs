@@ -78,7 +78,14 @@ namespace Drugstore
 
         private void addFieldbutton_Click(object sender, EventArgs e)
         {
-            use_categoriesBindingSource.AddNew();
+            try
+            {
+                use_categoriesBindingSource.AddNew();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
     }
 }
