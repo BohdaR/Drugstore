@@ -44,5 +44,16 @@ namespace Drugstore.Properties {
                 return ((string)(this["drugstoreConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\drugstore.mdf" +
+            ";Integrated Security=True")]
+        public string drugstoreConnectionString1 {
+            get {
+                return ((string)(this["drugstoreConnectionString1"]));
+            }
+        }
     }
 }

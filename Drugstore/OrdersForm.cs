@@ -29,6 +29,8 @@ namespace Drugstore
         {
             // TODO: This line of code loads data into the 'dataSet1.orders' table. You can move, or remove it, as needed.
             this.ordersTableAdapter.Fill(this.dataSet1.orders);
+            // TODO: This line of code loads data into the 'dataSet1.orders' table. You can move, or remove it, as needed.
+            this.ordersTableAdapter.Fill(this.dataSet1.orders);
             countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
         }
 
@@ -47,11 +49,17 @@ namespace Drugstore
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in ordersDataGridView.SelectedRows)
+            try
             {
-                ordersDataGridView.Rows.RemoveAt(row.Index);
+                foreach (DataGridViewRow row in ordersDataGridView.SelectedRows)
+                {
+                    ordersDataGridView.Rows.RemoveAt(row.Index);
+                }
             }
-
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             ordersBindingSource.EndEdit();
             ordersTableAdapter.Update(dataSet1);
 
@@ -60,9 +68,15 @@ namespace Drugstore
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            ordersBindingSource.EndEdit();
-            ordersTableAdapter.Update(dataSet1);
-
+            try
+            {
+                ordersBindingSource.EndEdit();
+                ordersTableAdapter.Update(dataSet1);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
         }
 
@@ -79,6 +93,25 @@ namespace Drugstore
             FilterInput.Clear();
 
             countLabel.Text = $"Усього: {ordersDataGridView.Rows.Count - 1}";
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            printDialog1.ShowDialog();
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
+
+        private void ordersBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.ordersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dataSet1);
+
         }
     }
 }

@@ -41,10 +41,16 @@ namespace Drugstore
         }
 
         private void saveButton_Click(object sender, EventArgs e)
-        {
-            drug_formBindingSource.EndEdit();
-            drug_formTableAdapter.Update(dataSet1);
-
+        {   
+            try
+            {
+                drug_formBindingSource.EndEdit();
+                drug_formTableAdapter.Update(dataSet1);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             countLabel.Text = $"Усього: {drug_formDataGridView.Rows.Count - 1}";
         }
 
@@ -65,11 +71,18 @@ namespace Drugstore
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in drug_formDataGridView.SelectedRows)
+            try
             {
-                drug_formDataGridView.Rows.RemoveAt(row.Index);
-            }
 
+                foreach (DataGridViewRow row in drug_formDataGridView.SelectedRows)
+                {
+                    drug_formDataGridView.Rows.RemoveAt(row.Index);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             drug_formBindingSource.EndEdit();
             drug_formTableAdapter.Update(dataSet1);
 
@@ -79,6 +92,17 @@ namespace Drugstore
         private void addFieldbutton_Click(object sender, EventArgs e)
         {
             drug_formBindingSource.AddNew();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            printDialog1.ShowDialog();
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }

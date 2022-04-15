@@ -59,11 +59,18 @@ namespace Drugstore
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in brendDataGridView.SelectedRows)
+            try
             {
-                brendDataGridView.Rows.RemoveAt(row.Index);
+                foreach (DataGridViewRow row in brendDataGridView.SelectedRows)
+                {
+                    brendDataGridView.Rows.RemoveAt(row.Index);
+                }
             }
-
+        
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             brendBindingSource.EndEdit();
             brendTableAdapter.Update(dataSet1);
 
@@ -72,8 +79,15 @@ namespace Drugstore
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            brendBindingSource.EndEdit();
-            brendTableAdapter.Update(dataSet1);
+            try
+            {
+                brendBindingSource.EndEdit();
+                brendTableAdapter.Update(dataSet1);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
 
             countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
         }
@@ -83,6 +97,17 @@ namespace Drugstore
             brendBindingSource.Filter = "name LIKE\'%" + FilterInput.Text + "%\'";
 
             countLabel.Text = $"Усього: {brendDataGridView.Rows.Count - 1}";
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            printDialog1.ShowDialog();
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }

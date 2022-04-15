@@ -79,9 +79,9 @@ namespace Drugstore
                 drugsBindingSource.EndEdit();
                 drugsTableAdapter.Update(dataSet1);
             }
-            catch
+            catch (Exception exception)
             {
-                MessageBox.Show("невірно", "Невірно", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exception.Message);
             }
             countLabel.Text = $"Усього: {drugsDataGridView.Rows.Count - 1}";
         }
@@ -103,11 +103,17 @@ namespace Drugstore
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in drugsDataGridView.SelectedRows)
+            try
             {
-                drugsDataGridView.Rows.RemoveAt(row.Index);
+                foreach (DataGridViewRow row in drugsDataGridView.SelectedRows)
+                {
+                    drugsDataGridView.Rows.RemoveAt(row.Index);
+                }
             }
-
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             drugsBindingSource.EndEdit();
             drugsTableAdapter.Update(dataSet1);
 
@@ -120,6 +126,17 @@ namespace Drugstore
         }
 
         private void use_category_idLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            printDialog1.ShowDialog();
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
 
         }

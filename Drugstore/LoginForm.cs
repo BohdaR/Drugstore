@@ -17,9 +17,16 @@ namespace Drugstore
         {
             InitializeComponent();
         }
+
+        private Boolean user_is_authenticated = false;
         private void LoginForm1_Load(object sender, EventArgs e)
         {
-
+            if (this.user_is_authenticated)
+            {
+                this.Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
+            }
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -55,22 +62,23 @@ namespace Drugstore
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            String userLogin = loginField.Text;
-            String userPassword = passField.Text;
-
             DB db = new DB();
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE login = @uL AND password = @uP", db.getConnection());
+
+            String userLogin = loginField.Text;
+            String userPassword = db.GetHashString(passField.Text);
+
+            db.openConnection();
+
+            SqlCommand command = new SqlCommand("SELECT user_is_authenticated FROM Users WHERE login = @uL AND password = @uP", db.getConnection());
 
             command.Parameters.Add("@uL", SqlDbType.NChar).Value = userLogin;
             command.Parameters.Add("@uP", SqlDbType.NChar).Value = userPassword;
 
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
+            SqlDataReader reader = command.ExecuteReader();
 
-            if(table.Rows.Count > 0)
+            if (reader.HasRows)
             {
+                this.user_is_authenticated = true;
                 this.Hide();
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
@@ -79,6 +87,10 @@ namespace Drugstore
             {
                 MessageBox.Show("невірно", "Невірно", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            db.closeConnection();
+            
+
         }
 
         private void registerLabel_Click(object sender, EventArgs e)

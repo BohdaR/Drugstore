@@ -42,9 +42,14 @@ namespace Drugstore
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            use_categoriesBindingSource.EndEdit();
-            use_categoriesTableAdapter.Update(dataSet1);
-
+            try{
+                use_categoriesBindingSource.EndEdit();
+                use_categoriesTableAdapter.Update(dataSet1);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             countLabel.Text = $"Усього: {use_categoriesDataGridView.Rows.Count - 1}";
         }
 
@@ -65,9 +70,16 @@ namespace Drugstore
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in use_categoriesDataGridView.SelectedRows)
+            try
             {
-                use_categoriesDataGridView.Rows.RemoveAt(row.Index);
+                foreach (DataGridViewRow row in use_categoriesDataGridView.SelectedRows)
+                {
+                    use_categoriesDataGridView.Rows.RemoveAt(row.Index);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
 
             use_categoriesBindingSource.EndEdit();
@@ -86,6 +98,17 @@ namespace Drugstore
             {
                 Console.WriteLine(exception);
             }
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            printDialog1.ShowDialog();
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }

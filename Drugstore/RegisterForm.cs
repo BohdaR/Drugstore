@@ -205,11 +205,11 @@ namespace Drugstore
             }
 
             DB db = new DB();
-            SqlCommand command = new SqlCommand("INSERT INTO users (name, mail, login, password) VALUES (@name, @mail, @login, @password)", db.getConnection());
+            SqlCommand command = new SqlCommand("INSERT INTO users (name, mail, login, password, user_is_authenticated) VALUES (@name, @mail, @login, @password, 'false')", db.getConnection());
             command.Parameters.Add("@name", SqlDbType.NChar).Value = userNameField.Text;
             command.Parameters.Add("@mail", SqlDbType.NChar).Value = userMailField.Text;
-            command.Parameters.Add("@login", SqlDbType.NChar).Value = loginField.Text; 
-            command.Parameters.Add("@password", SqlDbType.NChar).Value = passField.Text;
+            command.Parameters.Add("@login", SqlDbType.NChar).Value = loginField.Text;
+            command.Parameters.Add("@password", SqlDbType.NChar).Value = db.GetHashString(passField.Text);
 
             db.openConnection();
 

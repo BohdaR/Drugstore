@@ -66,6 +66,9 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printButton = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             idLabel1 = new System.Windows.Forms.Label();
             nameLabel1 = new System.Windows.Forms.Label();
             countryLabel1 = new System.Windows.Forms.Label();
@@ -418,12 +421,36 @@ namespace Drugstore
             this.dataGridViewTextBoxColumn6.HeaderText = "rating";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
+            // printButton
+            // 
+            this.printButton.BackColor = System.Drawing.Color.DarkMagenta;
+            this.printButton.FlatAppearance.BorderSize = 0;
+            this.printButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.printButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.printButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.printButton.Location = new System.Drawing.Point(382, 313);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(113, 44);
+            this.printButton.TabIndex = 90;
+            this.printButton.Text = "Print";
+            this.printButton.UseVisualStyleBackColor = false;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // BrendForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1031, 404);
+            this.Controls.Add(this.printButton);
             this.Controls.Add(this.brendDataGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(idLabel1);
@@ -488,5 +515,8 @@ namespace Drugstore
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button printButton;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }
